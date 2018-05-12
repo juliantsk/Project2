@@ -6,26 +6,42 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
+var passport = require("passport");
+var cookieParser = require("cookie-parser");
+var session = require("express-session");
+var flash = require("connect-flash");
 
 // Sets up the Express App
 // =============================================================
 var app = express();
 var PORT = process.env.PORT || 8080;
 
-// Sets up the Express app to handle data parsing
+// pass passport for configuration
+require('./config/passport')(passport);
 
+// read cookies
+app.use(cookieParser());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
 
+// required for passport
+// =============================================================
+app.use(session({ secret: 'placeholder' }));
+app.use(passport.initialize());
+// pesistent login sessions
+app.use(passport.session());
+app.use(flash());
+
 // Static directory
+// =============================================================
 app.use(express.static("/public"));
 
 // Routes
 // =============================================================
-require("./routes/api-routes.js")(app);
-require("./routes/html-routes.js")(app);
+require("./routes/api-routes.js")(app, passport);
+require("./routes/html-routes.js")(app, passport);
 
 // Read and set environment variables
 // =============================================================
