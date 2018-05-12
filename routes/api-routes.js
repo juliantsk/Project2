@@ -49,7 +49,7 @@ module.exports = function(app) {
         });
     });
 
-    // Delete a book
+    // Delete a grocery
     app.post("/api/delete", function(req, res) {
         console.log("Grocery Data:");
         console.log(req.body);
@@ -58,5 +58,11 @@ module.exports = function(app) {
                 id: req.body.id
             }
         });
+    });
+
+    // Logout
+    app.get("/logout", function(req, res) {
+        req.logout();
+        res.redirect("/");
     });
 };

@@ -1,0 +1,13 @@
+{{!-- Might need a different variable name --}}
+<h1>{{user.email}}</h1>
+
+<ul>
+    {{#each items}}
+    <li>
+        {{name}}
+
+{{!-- No javascript setup yet to make this work --}}
+	<button class="delete-item" data-id="{{this.id}}">DELETE!</button>
+    </li>
+    {{/each}}
+</ul>
