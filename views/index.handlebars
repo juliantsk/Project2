@@ -1,1 +1,43 @@
-<h1>Your Grocery List</h1>
+ <div class="container">
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="username" type="text" class="validate">
+                <label class="active" for="username">Username</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="password" type="text" class="validate">
+                <label class="active" for="password">Password</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s3">
+                <a class="waves-effect waves-light btn">Log in</a>
+            </div>
+
+            <div class="col s9">
+                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">New User</a>
+                <!-- Modal Structure -->
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <h4>Modal Header</h4>
+                        <p>This modal will help users create a new account</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                $('.modal').modal();
+            });
+
+        </script>
