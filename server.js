@@ -10,14 +10,13 @@ var passport = require("passport");
 var cookieParser = require("cookie-parser");
 var session = require("express-session");
 var flash = require("connect-flash");
+var exphbs = require("express-handlebars");
+var env = require("dotenv").load();
 
 // Sets up the Express App
 // =============================================================
 var app = express();
 var PORT = process.env.PORT || 8080;
-
-// pass passport for configuration
-require('./config/passport')(passport);
 
 // read cookies
 app.use(cookieParser());
@@ -28,7 +27,10 @@ app.use(bodyParser.json());
 
 // required for passport
 // =============================================================
-app.use(session({ secret: 'placeholder' }));
+// pass passport for configuration
+require('./config/passport')(passport);
+// session secret
+app.use(session({ secret: 'placeholder', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 // pesistent login sessions
 app.use(passport.session());
@@ -49,8 +51,6 @@ require("dotenv").config();
 
 // Handlebars
 // =============================================================
-const exphbs = require("express-handlebars");
-
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
