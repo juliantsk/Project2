@@ -67,7 +67,18 @@ var User = sequelize.define("user", {
             return bcrypt.compareSync(password, this.local.password);
         }
     }
+   
 });
+User.associate = function(models) {
+    // Associating Author with Posts
+    // When an Author is deleted, also delete any associated Posts
+    User.hasMany(models.List, {
+      onDelete: "cascade"
+    });
+    return User
+  };
+
+
 
 // generates a hash
 // Syncs with DB

@@ -4,23 +4,23 @@
 
 // Dependencies
 // =============================================================
-var Grocery = require("../models/grocery.js");
+var List = require("../models/list.js");
 
 // Routes
 // =============================================================
 module.exports = function(app) {
     // Get all groceries, for all users
     app.get("/api/all", function(req, res) {
-        Grocery.findAll({}).then(function(results) {
+        List.findAll({}).then(function(results) {
             res.json(results);
         });
     });
 
-    // Get a specific grocery
+    // Get a specific list
     app.get("/api/:user/:book", function(req, res) {
-        Grocery.findAll({
+        List.findAll({
             where: {
-                name: req.params.grocery
+                name: req.params.list
             }
         }).then(function(results) {
             res.json(results);
@@ -29,7 +29,7 @@ module.exports = function(app) {
 
     // Get all groceries of a specific category
     app.get("/api/category/:category", function(req, res) {
-        Grocery.findAll({
+        List.findAll({
             where: {
                 genre: req.params.genre
             }
@@ -38,22 +38,22 @@ module.exports = function(app) {
         });
     });
 
-    // Add a grocery
+    // Add a list
     app.post("/api/new", function(req, res) {
-        console.log("Grocery Data:");
+        console.log("List Data:");
         console.log(req.body);
-        Grocery.create({
+        List.create({
             name: req.body.name,
             user: req.body.user,
             category: req.body.category,
         });
     });
 
-    // Delete a grocery
+    // Delete a list
     app.post("/api/delete", function(req, res) {
-        console.log("Grocery Data:");
+        console.log("List Data:");
         console.log(req.body);
-        Grocery.destroy({
+        List.destroy({
             where: {
                 id: req.body.id
             }
