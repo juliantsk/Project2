@@ -5,8 +5,8 @@
 var Sequelize = require("sequelize");
 // sequelize (lowercase) references my connection to the DB.
 var sequelize = require("../config/connection.js");
-// Creates a "Grocery" model that matches up with DB
-var Grocery = sequelize.define("item", {
+// Creates a "Item" model that matches up with DB
+var Item = sequelize.define("item", {
     name: {
         type: Sequelize.STRING
     },
@@ -19,7 +19,7 @@ var Grocery = sequelize.define("item", {
 });
 
 // Syncs with DB
-Grocery.sync();
+Item.sync();
 
-// Makes the Grocery Model available for other files (will also create a table)
-module.exports = Grocery;
+// Makes the Item Model available for other files (will also create a table)
+module.exports = Item;
