@@ -8,7 +8,7 @@ var db = require("../models");
 
 // Routes
 // =============================================================
-module.exports = function(app) {
+module.exports = function(app, passport) {
     // Get all groceries, for all users
     app.get("/api/all", function(req, res) {
         db.List.findAll({}).then(function(results) {
