@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
     Item.associate = function(models) {
         // We're saying that a Item should belong to an Author
         // A Item can't be created without an Item due to the foreign key constraint
-        Item.hasMany(models.List, {
+        Item.hasMany(models.list, {
             foreignKey: {
                 allowNull: false
             },
