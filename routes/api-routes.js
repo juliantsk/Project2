@@ -17,7 +17,7 @@ module.exports = function(app, passport) {
     });
 
     // Get a specific list
-    app.get("/api/:user/:book", function(req, res) {
+    app.get("/api/:user/:list", function(req, res) {
         db.List.findAll({
             where: {
                 name: req.params.list

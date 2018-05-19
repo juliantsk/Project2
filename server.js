@@ -12,6 +12,7 @@ var session = require("express-session");
 var flash = require("connect-flash");
 var exphbs = require("express-handlebars");
 var env = require("dotenv").load();
+var passport = require("passport");
 
 // Sets up the Express App
 // =============================================================
@@ -57,8 +58,8 @@ app.set("view engine", "handlebars");
 var db = require("./models");
 // Starts the server to begin listening
 // =============================================================
-db.sequelize.sync({ force:true }).then(function() {
+db.sequelize.sync({ force: true }).then(function() {
     app.listen(PORT, function() {
-      console.log("App listening on PORT " + PORT);
+        console.log("App listening on PORT " + PORT);
     });
-  });
+});
