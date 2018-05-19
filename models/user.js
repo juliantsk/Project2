@@ -49,12 +49,4 @@ module.exports = function(sequelize, DataTypes) {
         });
     };
 
-    <<
-    << << < HEAD
-    return User;
-}; ===
-=== =
-// // Makes the Grocery Model available for other files (will also create a table)
-// //module.exports = User;
->>>
->>> > master
+};
