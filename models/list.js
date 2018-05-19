@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
 //var sequelize = require("../config/connection.js");
 // Creates a "Grocery" model that matches up with DB
 var List = sequelize.define("List", {
-    name: {
+    name_of_list: {
         type: DataTypes.STRING
     },
     user: {

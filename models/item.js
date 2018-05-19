@@ -14,11 +14,24 @@ var Item = sequelize.define("Item", {
     type: DataTypes.STRING,
       allowNull: false,
     },
-    user: {
-        type: DataTypes.STRING
+    quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
     },
-    category: {
-        type: DataTypes.STRING
+    unit: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    description: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+    },
+    price: {
+        type: DataTypes.INTEGER
+    },
+    picked_up: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     }
 });
 return Item

@@ -19,6 +19,16 @@ var User = sequelize.define("User", {
         type: DataTypes.STRING,
         allowNull: false,
         len: [1]
+      },
+      first_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        len: [1]
+      },
+      last_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        len: [1]
       }
     });
   
