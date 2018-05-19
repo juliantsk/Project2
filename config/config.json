@@ -1,31 +1,23 @@
 {
     "development": {
-<<<<<<< HEAD
         "username": "root",
-        "password": "password",
+        "password": "",
         "database": "groceries_db",
         "host": "127.0.0.1",
         "dialect": "mysql"
-=======
-      "username": "root",
-      "password": "",
-      "database": "groceries_db",
-      "host": "127.0.0.1",
-      "dialect": "mysql"
->>>>>>> master
     },
     "test": {
-      "username": "root",
-      "password": null,
-      "database": "database_test",
-      "host": "127.0.0.1",
-      "dialect": "mysql"
+        "username": "root",
+        "password": null,
+        "database": "database_test",
+        "host": "127.0.0.1",
+        "dialect": "mysql"
     },
     "production": {
-      "username": "root",
-      "password": null,
-      "database": "database_production",
-      "host": "127.0.0.1",
-      "dialect": "mysql"
+        "username": "root",
+        "password": null,
+        "database": "database_production",
+        "host": "127.0.0.1",
+        "dialect": "mysql"
     }
 }

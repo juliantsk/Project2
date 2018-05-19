@@ -1,70 +1,29 @@
-<<<<<<< HEAD
-// Creates a "Item" model that matches up with DB
 module.exports = function(sequelize, DataTypes) {
-    var Item = sequelize.define("item", {
+    // Creates a "Item" model that matches up with DB
+    var Item = sequelize.define("Item", {
         name: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false,
         },
-        user: {
-            type: DataTypes.STRING
+        quantity: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
         },
-        category: {
-            type: DataTypes.STRING
+        unit: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        description: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
+        price: {
+            type: DataTypes.INTEGER
+        },
+        picked_up: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
         }
     });
-    Item.associate = function(models) {
-        // We're saying that a Item should belong to an Author
-        // A Item can't be created without an Item due to the foreign key constraint
-        Item.hasMany(models.list, {
-            foreignKey: {
-                allowNull: false
-            },
-        });
-    };
-    return Item;
-};
-=======
-// Dependencies
-// =============================================================
-module.exports = function(sequelize, DataTypes) {
-// Sequelize (capital) references the standard library
-//var Sequelize = require("sequelize");
-// sequelize (lowercase) references my connection to the DB.
-//var sequelize = require("../config/connection.js");
-// Creates a "Item" model that matches up with DB
-
-// type: DataTypes.STRING,
-// allowNull: false,
-var Item = sequelize.define("Item", {
-    name: {
-    type: DataTypes.STRING,
-      allowNull: false,
-    },
-    quantity: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
-    unit: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
-    description: {
-        type: DataTypes.TEXT,
-        allowNull: false,
-    },
-    price: {
-        type: DataTypes.INTEGER
-    },
-    picked_up: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
-    }
-});
-return Item
+    return Item
 }
-// Syncs with DB
-// Item.sync();
-
-// // Makes the Item Model available for other files (will also create a table)
-// module.exports = Item;
->>>>>>> master
