@@ -6,7 +6,7 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
-//var passport = require("passport");
+var passport = require("passport");
 var cookieParser = require("cookie-parser");
 var session = require("express-session");
 var flash = require("connect-flash");
@@ -34,7 +34,7 @@ require('./config/passport')(passport);
 app.use(session({ secret: 'placeholder', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 // pesistent login sessions
-//app.use(passport.session());
+app.use(passport.session());
 app.use(flash());
 
 // Static directory
