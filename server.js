@@ -6,7 +6,7 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
-var passport = require("passport");
+//var passport = require("passport");
 var cookieParser = require("cookie-parser");
 var session = require("express-session");
 var flash = require("connect-flash");
@@ -33,7 +33,7 @@ require('./config/passport')(passport);
 app.use(session({ secret: 'placeholder', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 // pesistent login sessions
-app.use(passport.session());
+//app.use(passport.session());
 app.use(flash());
 
 // Static directory
@@ -42,8 +42,8 @@ app.use(express.static("/public"));
 
 // Routes
 // =============================================================
-require("./routes/api-routes.js")(app, passport);
-require("./routes/html-routes.js")(app, passport);
+//require("./routes/api-routes.js")(app, passport);
+//require("./routes/html-routes.js")(app, passport);
 
 // Read and set environment variables
 // =============================================================
@@ -54,9 +54,11 @@ require("dotenv").config();
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-
+var db = require("./models");
 // Starts the server to begin listening
 // =============================================================
-app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
-});
+db.sequelize.sync({ force:true }).then(function() {
+    app.listen(PORT, function() {
+      console.log("App listening on PORT " + PORT);
+    });
+  });

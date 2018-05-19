@@ -1,0 +1,124 @@
+  <div class="jumbotron text-center">
+    <div class="jumbotron">
+      <h1 id="momma">Momma's Little Helper!</h1>
+      <p id="quote">
+        <i>"Organized shopping! - Better decisions!"
+        </i>
+      </p>
+      <div id="notepad" class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12 ">
+            <img src="../public/assets/Images/notepad.png" alt="notepad">
+          </div>
+        </div>
+      </div>
+      <div id="notepad-bg" class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12 ">
+            <h3> Let's Create a new Account!</h3>
+            <a class="btn btn-primary" data-toggle="modal" data-target="#createAccount">Register</a>
+          </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-sm-12 ">
+              <h3> Already a user? Log in HERE!</h3>
+              <a class="btn btn-primary" data-toggle="modal" data-target="#logIn">Log In</a>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="createAccount" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title">
+              Register your new account
+            </h4>
+          </div>
+  
+          <!-- Modal Body -->
+          <div class="modal-body">
+  
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name </label>
+              <input type="text" id="lastName" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="text" id="password" placeholder="">
+                           
+            </div>
+            
+          </div>
+  
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" id="register" type="submit">
+              Register
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  <!-- Log In Modal -->
+  <div class="modal fade" id="logIn" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title">
+              Log In 
+            </h4>
+          </div>
+  
+          <!-- Modal Body -->
+          <div class="modal-body">
+  
+            <div class="form-group">
+              <label for="userName">User Name</label>
+              <input type="text" id="username" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="userPassword">Password </label>
+              <input type="text" id="userPassword" placeholder="">
+            </div>
+            
+            
+          </div>
+  
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" id="logIn" type="submit">
+              Log In
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  
+
