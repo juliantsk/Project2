@@ -73,9 +73,20 @@ module.exports = function(app, passport) {
         });
     });
 
+    // Delete an item
+    app.post("/api/delete/item", function(req, res) {
+        console.log("Item Data:");
+        console.log(req.body);
+        db.Item.destroy({
+            where: {
+                id: req.body.id
+            }
+        });
+    });
+
     // Delete a list
-    app.post("/api/delete", function(req, res) {
-        console.log("List Data:");
+    app.post("/api/delete/list", function(req, res) {
+        console.log("list Data:");
         console.log(req.body);
         db.List.destroy({
             where: {

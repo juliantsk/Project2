@@ -90,15 +90,17 @@ $(function () {
 
 /* this will delete everything in the table
       $("#done-shopping").on("click", function(event) {
-        var id = $(this).data("id");
-    
+      var id = $(this).data("id");
+
         // Send the DELETE request.
-        $.ajax("" +, {
-          type: "DELETE"
+        $.ajax("/api/delete/item", {
+            type: "DELETE"
         }).then(
-          function() {
-            
-          }
+            function() {
+                console.log("deleted item", id);
+                // Reload the page to get the updated list
+                location.reload();
+            }
         );
-      });
+    });
 });
