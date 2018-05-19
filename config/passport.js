@@ -1,5 +1,5 @@
-// var LocalStrategy = require("passport-local").Strategy;
-// var User = require("../models/user");
+var LocalStrategy = require("passport-local").Strategy;
+var db = require("./models");
 
 // module.exports = function(passport) {
 
@@ -9,12 +9,13 @@
 //         done(null, user, id);
 //     });
 
-//     // used to deserialize the user
-//     passport.deserializeUser(function(id, done) {
-//         User.findById(id, function(err, user) {
-//             done(err, user);
-//         });
-//     });
+
+    // used to deserialize the user
+    passport.deserializeUser(function(id, done) {
+        db.User.findById(id, function(err, user) {
+            done(err, user);
+        });
+    });
 
 //     // Local Signup
 //     passport.use("local-signup", new LocalStrategy({
@@ -25,9 +26,9 @@
 //         },
 //         function(req, email, password, done) {
 
-//             process.nextTick(function() {
-//                 User.findOne({ "local.email": email }, function(err, user) {
-//                     if (err) return done(err);
+            process.nextTick(function() {
+                db.User.findOne({ "local.email": email }, function(err, user) {
+                    if (err) return done(err);
 
 //                     if (user) {
 //                         return done(null, false, req.flash("signupMessage", "That email is already taken."));
@@ -49,15 +50,16 @@
 //             });
 //         }));
 
-//     // Local login
-//     passport.use("local-login", new LocalStrategy({
-//             usernameField: email,
-//             passwordField: "password",
-//             passReqToCallback: true
-//         },
-//         function(req, email, password, done) {
-//             User.findOne({ "local.email": email }, function(err, user) {
-//                 if (err) return done(err);
+
+    // Local login
+    passport.use("local-login", new LocalStrategy({
+            usernameField: email,
+            passwordField: "password",
+            passReqToCallback: true
+        },
+        function(req, email, password, done) {
+            db.User.findOne({ "local.email": email }, function(err, user) {
+                if (err) return done(err);
 
 //                 if (!user) {
 //                     return done(null, false, req.flash("loginMessage", "No user found."));
