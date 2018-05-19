@@ -12,6 +12,7 @@ var session = require("express-session");
 var flash = require("connect-flash");
 var exphbs = require("express-handlebars");
 var env = require("dotenv").load();
+var passport = require("passport");
 
 // Sets up the Express App
 // =============================================================
@@ -42,8 +43,8 @@ app.use(express.static("/public"));
 
 // Routes
 // =============================================================
-//require("./routes/api-routes.js")(app, passport);
-//require("./routes/html-routes.js")(app, passport);
+require("./routes/api-routes.js")(app, passport);
+require("./routes/html-routes.js")(app, passport);
 
 // Read and set environment variables
 // =============================================================
@@ -57,8 +58,8 @@ app.set("view engine", "handlebars");
 var db = require("./models");
 // Starts the server to begin listening
 // =============================================================
-db.sequelize.sync({ force:true }).then(function() {
+db.sequelize.sync({ force: true }).then(function() {
     app.listen(PORT, function() {
-      console.log("App listening on PORT " + PORT);
+        console.log("App listening on PORT " + PORT);
     });
-  });
+});
