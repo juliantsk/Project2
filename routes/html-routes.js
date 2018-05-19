@@ -20,17 +20,13 @@ module.exports = function(app, passport) {
     });
 
     // show the login form
-    app.get("/index", function(req, res) {
-        res.render("login", { message: req.flash("loginMessage") });
-    });
-
-    app.get("/list", function(req, res) {
+    app.get("/login", function(req, res) {
         res.render("login", { message: req.flash("loginMessage") });
     });
 
     // process the login form
     app.post("/login", passport.authenticate("local-login", {
-        successRedirect: "/profile",
+        successRedirect: "/list",
         failureRedirect: "/login",
         failureFlash: true
     }));
@@ -44,7 +40,7 @@ module.exports = function(app, passport) {
 
     // process the signup form
     app.post("/signup", passport.authenticate("local-signup", {
-        successRedirect: "/profile",
+        successRedirect: "/list",
         failureRedirect: "/signup",
         failureFlash: true
     }));
