@@ -1,0 +1,101 @@
+body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 1.8;
+    /* color: #818181; */
+    background-color: #e7717d
+}
+h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #303030;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+h3 {
+    font-size: 24px;
+    color: #e7717d;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-family: 'Homemade Apple', cursive;
+}
+h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    color: #303030;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+h5 {
+    font-size: 08px;
+    color: #303030;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+.jumbotron {
+    /*background-color: #8d8741;*/
+    /* background-color: #659dbd; */
+    color: #fff;
+    padding: 40px 25px;
+    background: url("../images/notepad.png");
+    background: no-repeat;
+    font-family: Montserrat, sans-serif;
+}
+#notepad-bg {
+    position:absolute;
+    z-index: inherit 50;;
+    top:500px;
+    bottom:0px;
+    left:50px;
+    right:0;
+
+
+    widows: 100%;
+    height: 100%;
+}
+.container-fluid {
+    padding: 0px 50px;
+}
+.btn-submit {
+    background-color: #8d8741;
+    border: #8d8741;
+    padding: 7px;
+}
+.btn-sm {
+    background-color: #8d8741;
+    border: #8d8741;
+    padding: 8px;
+}
+.btn-lg {
+    background-color: #8d8741;
+    border: #8d8741;
+    padding: 10px;
+}
+ #momma{
+     font-size: 75px;
+     font-weight: bold;
+     padding:0;
+     font-family: 'Homemade Apple', cursive;
+     color: #7e685a;
+
+        /* font-family: 'Rock Salt', cursive;
+        font-family: 'Gochi Hand', cursive;
+        font-family: 'The Girl Next Door', cursive;
+        font-family: 'Finger Paint', cursive; */
+ } 
+ #quote{
+     font-weight: bold;
+     color:#afd275;
+     font-style: italic;
+ }
+ #img{
+     border: 10px solid;
+     padding: 15px;
+     
+ }
+
+
+  /* font-family: 'Homemade Apple', cursive;
+font-family: 'Rock Salt', cursive;
+font-family: 'Gochi Hand', cursive;
+font-family: 'The Girl Next Door', cursive;
+font-family: 'Finger Paint', cursive; */
