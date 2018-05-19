@@ -8,7 +8,7 @@
     <div id="notepad" class="container-fluid">
       <div class="row">
         <div class="col-sm-12 ">
-          <img src="assets/images/notepad.png" alt="notepad">
+          <img src="../public/assets/Images/notepad.png" alt="notepad">
         </div>
       </div>
     </div>
@@ -18,13 +18,12 @@
           <table class="table table-sm" id="list">
             <thead id="tHead">
               <tr>
-                <th scope="col">#:</th>
+                <th scope="col">Name:</th>
                 <th scope="col">Qty:</th>
                 <th scope="col">Unit:</th>
                 <th scope="col">Description:</th>
-                <th scope="col">Price:</th>
-                <th scope="col"></th>
-                <th scope="col">Item Total:</th>
+                <th scope="col">Picked up?</th>
+                <th scope="col">Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -34,8 +33,12 @@
                 <td>{{qty}}</td>
                 <td>{{unit}}</td>
                 <td>{{description}}</td>
-                <td><input type="checkbox" aria-label="Checkbox for following text input"></td>
-                <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                <td>
+                  <input type="checkbox" aria-label="Checkbox for following text input">
+                </td>
+                <td>
+                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -51,6 +54,13 @@
       </div>
     </div>
   </div>
+
+  <button type="button" class="btn btn-default">
+    Add itemt to list
+  </button>
+  <button type="button" class="btn btn-default">
+    Done Shopping
+  </button>
 </div>
 
 
@@ -73,13 +83,19 @@
     <input type="text" id="description" placeholder="Description">
   </div>
 
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">
+      Submit
+    </button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">
+      Cancel
+    </button>
+  </div>
 </div>
 
-<div class="modal-footer">
-  <button type="button" class="btn btn-default" data-dismiss="modal">
-    Submit
-  </button>
-   <button type="button" class="btn btn-default" data-dismiss="modal">
-   Cancel
-  </button>
-</div>
+<script type="text/javascript">
+
+
+
+</script>

@@ -19,7 +19,11 @@ module.exports = function(app) {
     });
 
     // show the login form
-    app.get("/login", function(req, res) {
+    app.get("/index", function(req, res) {
+        res.render("login", { message: req.flash("loginMessage") });
+    });
+
+    app.get("/list", function(req, res) {
         res.render("login", { message: req.flash("loginMessage") });
     });
 
