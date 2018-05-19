@@ -1,8 +1,12 @@
 var LocalStrategy = require("passport-local").Strategy;
 var db = require("../models");
+var bcrypt = require("bcrypt-nodejs");
 
 module.exports = function(passport) {
 
+    var generateHash = function(password) {
+        return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+    };
 
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
@@ -26,26 +30,32 @@ module.exports = function(passport) {
         },
         function(req, email, password, done) {
 
+            console.log(email, password);
             process.nextTick(function() {
-                db.User.findOne({ "local.email": email }, function(err, user) {
-                    if (err) return done(err);
+                db.User.findOne({
+                    where: {
+                        email: email
+                    }
+                }).then(function(user) {
+                    console.log(user);
 
                     if (user) {
                         return done(null, false, req.flash("signupMessage", "That email is already taken."));
                     } else {
+                        var newUser = {
+                            email: email,
+                            password: generateHash(password)
+                        };
                         // create the user
-                        var newUser = new User();
-
-                        // set the user's local credentials
-                        newUser.local.email = email;
-                        newUser.local.password = newUser.generateHash(password);
-
-                        // save the user
-                        newUser.save(function(err) {
-                            if (err) throw err;
-                            return done(null, newUser);
-                        });
+                        db.User.create(newUser)
+                            .then(function(data) {
+                                return done(null, newUser);
+                            }).catch(function(err) {
+                                throw err;
+                            });
                     }
+                }).catch(function(err) {
+                    throw err;
                 });
             });
         }));

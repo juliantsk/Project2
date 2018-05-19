@@ -1,6 +1,5 @@
 // Dependencies
 // =============================================================
-var bcrypt = require("bcrypt-nodejs");
 
 module.exports = function(sequelize, DataTypes) {
     // Creates a "User" model that matches up with DB
@@ -19,20 +18,15 @@ module.exports = function(sequelize, DataTypes) {
         },
         first_name: {
             type: DataTypes.STRING,
-            allowNull: false,
             len: [1]
         },
         last_name: {
             type: DataTypes.STRING,
-            allowNull: false,
             len: [1]
         }
     }, {
         instanceMethods: {
             // // generates a hash
-            generateHash(password) {
-                return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-            },
             validPassword(password) {
                 return bcrypt.compareSync(password, this.local.password);
             }
