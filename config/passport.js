@@ -1,13 +1,13 @@
 var LocalStrategy = require("passport-local").Strategy;
 var db = require("../models");
 
-// module.exports = function(passport) {
+module.exports = function(passport) {
 
 
-//     // used to serialize the user for the session
-//     passport.serializeUser(function(user, done) {
-//         done(null, user, id);
-//     });
+    //     // used to serialize the user for the session
+    passport.serializeUser(function(user, done) {
+        done(null, user, id);
+    });
 
 
     // used to deserialize the user
@@ -17,38 +17,38 @@ var db = require("../models");
         });
     });
 
-//     // Local Signup
-//     passport.use("local-signup", new LocalStrategy({
+    // Local Signup
+    passport.use("local-signup", new LocalStrategy({
 
-//             usernameField: "email",
-//             passwordField: "password",
-//             passReqToCallback: true
-//         },
-//         function(req, email, password, done) {
+            usernameField: "email",
+            passwordField: "password",
+            passReqToCallback: true
+        },
+        function(req, email, password, done) {
 
             process.nextTick(function() {
                 db.User.findOne({ "local.email": email }, function(err, user) {
                     if (err) return done(err);
 
-//                     if (user) {
-//                         return done(null, false, req.flash("signupMessage", "That email is already taken."));
-//                     } else {
-//                         // create the user
-//                         var newUser = new User();
+                    if (user) {
+                        return done(null, false, req.flash("signupMessage", "That email is already taken."));
+                    } else {
+                        // create the user
+                        var newUser = new User();
 
-//                         // set the user's local credentials
-//                         newUser.local.email = email;
-//                         newUser.local.password = newUser.generateHash(password);
+                        // set the user's local credentials
+                        newUser.local.email = email;
+                        newUser.local.password = newUser.generateHash(password);
 
-//                         // save the user
-//                         newUser.save(function(err) {
-//                             if (err) throw err;
-//                             return done(null, newUser);
-//                         });
-//                     }
-//                 });
-//             });
-//         }));
+                        // save the user
+                        newUser.save(function(err) {
+                            if (err) throw err;
+                            return done(null, newUser);
+                        });
+                    }
+                });
+            });
+        }));
 
 
     // Local login
@@ -61,16 +61,16 @@ var db = require("../models");
             db.User.findOne({ "local.email": email }, function(err, user) {
                 if (err) return done(err);
 
-//                 if (!user) {
-//                     return done(null, false, req.flash("loginMessage", "No user found."));
-//                 }
+                if (!user) {
+                    return done(null, false, req.flash("loginMessage", "No user found."));
+                }
 
-//                 if (!user.validPassword(password)) {
-//                     return done(null, false, req.flash("loginMessage", "Oops! Wrong pasword."));
-//                 }
+                if (!user.validPassword(password)) {
+                    return done(null, false, req.flash("loginMessage", "Oops! Wrong pasword."));
+                }
 
-//                 return done(null, user);
-//             })
-//         }));
+                return done(null, user);
+            })
+        }));
 
-// };
+};
