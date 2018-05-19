@@ -5,11 +5,12 @@
 // Dependencies
 // =============================================================
 var path = require("path");
+var passport = require("../config/passport");
 
 
 // Routes
 // =============================================================
-module.exports = function(app) {
+module.exports = function(app, passport) {
 
     // Each of the below routes just handles the HTML page that the user gets sent to.
 
@@ -49,8 +50,8 @@ module.exports = function(app) {
     }));
 
     // show the user's list and information
-    app.get("/profile", isLoggedIn, function(req, res) {
-        res.render("profile", {
+    app.get("/list", isLoggedIn, function(req, res) {
+        res.render("list", {
             user: req.user
         });
     });

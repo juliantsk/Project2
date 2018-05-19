@@ -4,21 +4,21 @@
 
 // Dependencies
 // =============================================================
-var List = require("../models/list.js");
+var db = require("../models");
 
 // Routes
 // =============================================================
-module.exports = function(app) {
+module.exports = function(app, passport) {
     // Get all groceries, for all users
     app.get("/api/all", function(req, res) {
-        List.findAll({}).then(function(results) {
+        db.List.findAll({}).then(function(results) {
             res.json(results);
         });
     });
 
     // Get a specific list
     app.get("/api/:user/:book", function(req, res) {
-        List.findAll({
+        db.List.findAll({
             where: {
                 name: req.params.list
             }
@@ -29,7 +29,7 @@ module.exports = function(app) {
 
     // Get all groceries of a specific category
     app.get("/api/category/:category", function(req, res) {
-        List.findAll({
+        db.List.findAll({
             where: {
                 genre: req.params.genre
             }
@@ -42,7 +42,7 @@ module.exports = function(app) {
     app.post("/api/new", function(req, res) {
         console.log("List Data:");
         console.log(req.body);
-        List.create({
+        db.List.create({
             name: req.body.name,
             user: req.body.user,
             category: req.body.category,
@@ -53,7 +53,7 @@ module.exports = function(app) {
     app.post("/api/delete", function(req, res) {
         console.log("List Data:");
         console.log(req.body);
-        List.destroy({
+        db.List.destroy({
             where: {
                 id: req.body.id
             }
