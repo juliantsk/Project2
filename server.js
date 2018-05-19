@@ -13,6 +13,7 @@ var flash = require("connect-flash");
 var exphbs = require("express-handlebars");
 var env = require("dotenv").load();
 var passport = require("passport");
+var path = require("path");
 
 // Sets up the Express App
 // =============================================================
@@ -39,7 +40,7 @@ app.use(flash());
 
 // Static directory
 // =============================================================
-app.use(express.static("/public"));
+app.use("/public", express.static(path.join(__dirname, 'public')));
 
 // Routes
 // =============================================================

@@ -5,40 +5,40 @@ $(function() {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
         var newItem = {
-          name: $("#item").val().trim(),
-          qty: $("#qty").val().trim(),
-          unit: $("#unit").val().trim(),
-          description: $("#desription").val().trim(),         
+            name: $("#item").val().trim(),
+            qty: $("#qty").val().trim(),
+            unit: $("#unit").val().trim(),
+            description: $("#desription").val().trim(),
         };
-    
+
         // Send the POST request.
         //WTF should the route in this ajax call be??
-         $.ajax("", {
+        $.ajax("", {
 
-          type: "POST",
-          data: newItem
+            type: "POST",
+            data: newItem
         }).then(
-          function() {
-            console.log("created new item for list");
-            // Reload the page to get the updated list
-            location.reload();
-          }
+            function() {
+                console.log("created new item for list");
+                // Reload the page to get the updated list
+                location.reload();
+            }
         );
-      });
+    });
 
-      $(".glyphicon-remove").on("click", function(event) {
+    $(".glyphicon-remove").on("click", function(event) {
         var id = $(this).data("id");
-    
+
         // Send the DELETE request.
-        $.ajax("/api/cats/" + id, {
-          type: "DELETE"
+        $.ajax("/api/delete/item", {
+            type: "DELETE"
         }).then(
-          function() {
-            console.log("deleted cat", id);
-            // Reload the page to get the updated list
-            location.reload();
-          }
+            function() {
+                console.log("deleted cat", id);
+                // Reload the page to get the updated list
+                location.reload();
+            }
         );
-      });
+    });
 
 });
