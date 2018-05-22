@@ -18,7 +18,8 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
         },
         price: {
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            allowNull: true,
         },
         picked_up: {
             type: DataTypes.BOOLEAN,

@@ -2,7 +2,7 @@ module.exports = function(sequelize, DataTypes) {
     ItemList = sequelize.define('ItemList', {
       UserList: {
         type: DataTypes.STRING,
-          allowNull: false,
+          allowNull: true,
         }
       });
     

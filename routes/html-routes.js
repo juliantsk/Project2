@@ -46,7 +46,7 @@ module.exports = function(app, passport) {
     }));
 
     // show the user's list and information
-    app.get("/list", isLoggedIn, function(req, res) {
+    app.get("/list",  function(req, res) {
         res.render("list", {
             user: req.user
         });

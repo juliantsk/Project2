@@ -27,23 +27,39 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                {{#each items}}
-                {{> items/items-block picked_up=false}}
-                <td>{{name}}</td>
+           
+                  
+                            <tr>
+                               {{#each items}}
+                                    <td>
+                                       {{this.name}}
+                                       {{this.quantity}}
+                                       {{this.unit}}
+                                      {{this.description}}
+                                   
+                                    </td>
+                                  
+                                 {{/each}}
+                               
+                          </tr>
+                {{!-- <th scope="row">1</th> --}}
+                {{!-- {{#each item}}
+                {{!-- {{> items/items-block picked_up=false}} --}}
+                {{!-- <td>{{name}}</td>
                 <td>{{quantity}}</td>
                 <td>{{unit}}</td>
                 <td>{{description}}</td>
-                <td>{{price}}</td>
-                <td>
+                {{/each}} --}} 
+                {{!-- <td>{{price}}</td>
+                <td>{{picked_up}}</td> --}}
+                {{!-- <td>
                   <input type="checkbox" aria-label="Checkbox for following text input">
                 </td>
                 <td>
-                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                {{/each}}
-                </td>
-              </tr>
+                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> --}}
+                {{!-- {{/each}} --}}
+                {{!-- </td>
+              </tr> --}}
             </tbody>
           </table>
 
