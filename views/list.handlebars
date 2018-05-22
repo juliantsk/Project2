@@ -2,35 +2,35 @@
   <div class="jumbotron">
     <h1 id="momma">Momma's Little Helper!</h1>
     <p id="quote">
-      <i>"Organized shopping! - Better decisions!"
+      <i>"Organized shopping! Better decisions!"
       </i>
     </p>
     <div id="notepad" class="container-fluid">
       <div class="row">
         <div class="col-sm-12 ">
-          <img src="../public/assets/Images/notepad.png" alt="notepad">
+          <!-- <img src="/public/assets/img/notepad.png" alt="notepad">-->
         </div>
       </div>
     </div>
-    <div id="list-bg" class="container-fluid">
+    <div class="container-fluid">
+
       <div class="row align-items-center">
-        <div class="col-sm-4  col-sm-offset-4">
+        <div class="col-sm-12">
           <table class="table table-sm" id="list">
             <thead id="tHead">
               <tr>
-                <th scope="col">Name:</th>
-                <th scope="col">Qty:</th>
-                <th scope="col">Unit:</th>
-                <th scope="col">Description:</th>
+                <th scope="col">Name</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Unit</th>
+                <th scope="col">Description</th>
                 <th scope="col">Picked up?</th>
                 <th scope="col">Delete</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">1</th>
-                {{#each items}}
-                {{> items/items-block picked_up=false}}
+                <th scope="row"></th>
+                {{#each items}} {{> items/items-block picked_up=false}}
                 <td>{{name}}</td>
                 <td>{{quantity}}</td>
                 <td>{{unit}}</td>
@@ -41,59 +41,72 @@
                 </td>
                 <td>
                   <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                {{/each}}
+                  {{/each}}
                 </td>
               </tr>
             </tbody>
           </table>
-
-        </div>
-      </div>
-      <br>
-      <br>
-      <div class="row">
-        <div class="col-sm-12 ">
-
+          <a class="btn btn-primary" data-toggle="modal" data-target="#createItem">Add Item</a>
+          <button type="button" class="btn btn-primary" id="done-shopping">
+            Done Shopping
+          </button>
         </div>
       </div>
     </div>
+    <br>
+    <br>
   </div>
-
-  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addItem">
-    Add itemt to list
-  </button>
-  <button type="button" class="btn btn-default" id="done-shopping">
-    Done Shopping
-  </button>
+</div>
+</div>
+</div>
 </div>
 
+</div>
+</div>
+</div>
 
-<div class="modal-body"id="addItem">
+<div class="modal fade" id="createItem" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+        </button>
+      </div>
 
-  <div class="form-group">
-    <label for="item">Item</label>
-    <input type="text" id="itemName" placeholder="Item">
-  </div>
-  <div class="form-group">
-    <label for="qty">Quantity </label>
-    <input type="text" id="qty" placeholder="Quantity">
-  </div>
-  <div class="form-group">
-    <label for="unit">Unit</label>
-    <input type="text" id="unit" placeholder="Unit">
-  </div>
-  <div class="form-group">
-    <label for="description">Description</label>
-    <input type="text" id="description" placeholder="Description">
-  </div>
+      <!-- Modal Body -->
+      <div class="modal-body">
 
+        <div class="form-group">
+          <label for="item">Item</label>
+          <input type="text" id="itemName" placeholder="Item">
+        </div>
+        <div class="form-group">
+          <label for="qty">Quantity </label>
+          <input type="text" id="qty" placeholder="Quantity">
+        </div>
+        <div class="form-group">
+          <label for="unit">Unit</label>
+          <input type="text" id="unit" placeholder="Unit">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" id="description" placeholder="Description">
+        </div>
 
-  <div class="modal-footer">
-    <button type="button" class="btn btn-default" id="create-item"data-dismiss="modal">
-      Submit
-    </button>
-    <button type="button" class="btn btn-default" data-dismiss="modal" id="cancel">
-      Cancel
-    </button>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" id="create-item" type="submit">
+          Add
+        </button>
+      </div>
+    </div>
   </div>
 </div>
