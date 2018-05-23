@@ -8,61 +8,43 @@
     <div id="notepad" class="container-fluid">
       <div class="row">
         <div class="col-sm-12 ">
-          <!-- <img src="/public/assets/img/notepad.png" alt="notepad">-->
+          <img src="/public/assets/img/notepad.png" alt="notepad">
         </div>
       </div>
     </div>
     <div class="container-fluid">
 
-      <div class="row align-items-center">
-        <div class="col-sm-12">
+      <div class="row align-items-center" id="list-bg">
+        <div class="col-sm-4 col-sm-offset-4">
           <table class="table table-sm" id="list">
-              <thead id="tHead">
-                <tr>
-                  <th scope="col">Name:</th>
-                  <th scope="col">Qty:</th>
-                  <th scope="col">Unit:</th>
-                  <th scope="col">Description:</th>
-                  <th scope="col">Picked up?</th>
-                  <th scope="col">Delete</th>
-                </tr>
-              </thead>
-                <tbody>
-              
-                      
-                            
-                          {{#each items}}
-                              <tr>
-                                
-                                  <td>{{this.name}}</td>
-                                  <td>{{this.quantity}}</td>
-                                  <td>{{this.unit}}</td>
-                                  <td>{{this.description}}</td>
-                                      
-                                      
-                                </tr>
-                            {{/each}}
-                            
-                            
-                    {{!-- <th scope="row">1</th> --}}
-                    {{!-- {{#each item}}
-                    {{!-- {{> items/items-block picked_up=false}} --}}
-                    {{!-- <td>{{name}}</td>
-                    <td>{{quantity}}</td>
-                    <td>{{unit}}</td>
-                    <td>{{description}}</td>
-                    {{/each}} --}} 
-                    {{!-- <td>{{price}}</td>
-                    <td>{{picked_up}}</td> --}}
-                    {{!-- <td>
-                      <input type="checkbox" aria-label="Checkbox for following text input">
-                    </td>
-                    <td>
-                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> --}}
-                    {{!-- {{/each}} --}}
-                    {{!-- </td>
-                  </tr> --}}
-                </tbody>
+            <thead id="tHead">
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Unit</th>
+                <th scope="col">Description</th>
+                <th scope="col">Picked up?</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody id="tbody">
+              <tr>
+                <th scope="row"></th>
+                {{#each items}} {{> items/items-block picked_up=false}}
+                <td>{{name}}</td>
+                <td>{{quantity}}</td>
+                <td>{{unit}}</td>
+                <td>{{description}}</td>
+                <td>{{price}}</td>
+                <td>
+                  <input type="checkbox" aria-label="Checkbox for following text input">
+                </td>
+                <td>
+                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                  {{/each}}
+                </td>
+              </tr>
+            </tbody>
           </table>
           <a class="btn btn-primary" data-toggle="modal" data-target="#createItem">Add Item</a>
           <button type="button" class="btn btn-success" id="done-shopping">
