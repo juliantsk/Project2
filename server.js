@@ -15,6 +15,7 @@ var env = require("dotenv").load();
 var passport = require("passport");
 var path = require("path");
 
+var db = require("./models");
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -30,7 +31,7 @@ app.use(bodyParser.json());
 // required for passport
 // =============================================================
 // pass passport for configuration
-require('./config/passport')(passport);
+require('./config/passport')(passport, db.User);
 // session secret
 app.use(session({ secret: 'placeholder', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
@@ -46,6 +47,7 @@ app.use("/public", express.static(path.join(__dirname, 'public')));
 // =============================================================
 require("./routes/api-routes.js")(app, passport);
 require("./routes/html-routes.js")(app, passport);
+require("./routes/auth.js")(app, passport);
 
 // Read and set environment variables
 // =============================================================
@@ -56,7 +58,6 @@ require("dotenv").config();
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var db = require("./models");
 // Starts the server to begin listening
 // =============================================================
 db.sequelize.sync({ force: true }).then(function() {

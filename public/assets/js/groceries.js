@@ -19,7 +19,7 @@ $(function() {
             function() {
                 console.log("created new account");
                 // Reload the page to get the updated list
-                location.reload();
+                window.location.href = "/list";
             }
         );
     });
@@ -28,20 +28,20 @@ $(function() {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
         var logIn = {
-            em: $("#em").val().trim(),
-            userPassword: $("#userPassword").val().trim(),
+            email: $("#em").val().trim(),
+            password: $("#userPassword").val().trim(),
         };
 
         // Send the POST request.
         //WTF should the route in this ajax call be??
-        $.ajax("/login", {
+        $.ajax("/signin", {
             type: "POST",
             data: logIn
         }).then(
             function() {
-                console.log("created new account");
+                console.log("logged in");
                 // Reload the page to get the updated list
-                location.reload();
+                window.location.href = "/list";
             }
         );
     });
@@ -50,20 +50,23 @@ $(function() {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
         var newItem = {
-            name: $("#item").val().trim(),
-            qty: $("#qty").val().trim(),
+            name: $("#itemName").val().trim(),
+            quantity: $("#qty").val().trim(),
             unit: $("#unit").val().trim(),
-            description: $("#desription").val().trim(),
+            description: $("#description").val().trim(),
         };
-
+console.log(newItem);
         // Send the POST request.
-        //WTF should the route in this ajax call be??
-        $.ajax("", {
+      
+        $.post("/api/items", newItem)
+        //  {
 
-            type: "POST",
-            data: newItem
-        }).then(
-            function() {
+        //     type: "POST",
+        //     data: newItem
+        // }
+        .then(
+            function(response) {
+                console.log(response)
                 console.log("created new item for list");
                 // Reload the page to get the updated list
                 location.reload();

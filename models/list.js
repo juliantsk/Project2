@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
 
         List.hasMany(models.Item, {
             foreignKey: {
-                allowNull: false
+                allowNull: true
             },
         });
         // List.hasMany(models.User, {

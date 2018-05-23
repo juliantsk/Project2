@@ -24,13 +24,6 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             len: [1]
         }
-    }, {
-        instanceMethods: {
-            // // generates a hash
-            validPassword(password) {
-                return bcrypt.compareSync(password, this.local.password);
-            }
-        }
     });
 
     User.associate = function(models) {
