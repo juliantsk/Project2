@@ -59,7 +59,8 @@ module.exports = function(app, passport) {
         //   console.log(dbItem)
         console.log(dbItem)
        
-        res.render("list", {item:[ dbItem]}  )
+       
+        res.render("list", {items:[ dbItem]}  )
       
         });
       
