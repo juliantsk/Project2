@@ -9,6 +9,19 @@ var db = require("../models");
 // Routes
 // =============================================================
 module.exports = function(app, passport) {
+    // process the login form
+    // app.post("/login", passport.authenticate("local-login", {
+    //     successRedirect: "/list",
+    //     failureRedirect: "/",
+    //     failureFlash: true
+    // }));
+
+    // // process the signup form
+    // app.post("/signup", passport.authenticate("local-signup", {
+    //     successRedirect: "/list",
+    //     failureRedirect: "/",
+    // }));
+
     // Get all groceries, for all users
     app.get("/api/all", function(req, res) {
         db.List.findAll({}).then(function(results) {
@@ -26,30 +39,28 @@ module.exports = function(app, passport) {
             res.json(results);
         });
     });
-      // PUT route for updating lists
-  app.put("/api/posts", function(req, res) {
-    db.List.update(
-      req.body,
-      {
-        where: {
-          id: req.body.id
-        }
-      }).then(function(dbList) {
-      res.json(dbList);
-    });
-  });
-     // PUT route for updating items
-     app.put("/api/items", function(req, res) {
-        db.Item.update(
-          req.body.picked_up,
-          {
-            where: {
-            id: req.body.id
-            }
-          }).then(function(dbItem) {
-          res.json(dbItem);
+    // PUT route for updating lists
+    app.put("/api/posts", function(req, res) {
+        db.List.update(
+            req.body, {
+                where: {
+                    id: req.body.id
+                }
+            }).then(function(dbList) {
+            res.json(dbList);
         });
-      });
+    });
+    // PUT route for updating items
+    app.put("/api/items", function(req, res) {
+        db.Item.update(
+            req.body.picked_up, {
+                where: {
+                    id: req.body.id
+                }
+            }).then(function(dbItem) {
+            res.json(dbItem);
+        });
+    });
 
     // Get all groceries of a specific category
     app.get("/api/category/:category", function(req, res) {
