@@ -48,7 +48,22 @@ module.exports = function(app, passport) {
             }
           }).then(function(dbItem) {
           res.json(dbItem);
+      
         });
+      });
+
+      //post route for adding an item
+      app.post("/api/items", function(req, res) {
+        db.Item.create(req.body).then(function(dbItem) {
+          //res.json(dbItem);
+        //   console.log(dbItem)
+        console.log(dbItem)
+       
+       
+        res.render("list", {items:[ dbItem]}  )
+      
+        });
+      
       });
 
     // Get all groceries of a specific category
