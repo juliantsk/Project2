@@ -8,14 +8,14 @@
     <div id="notepad" class="container-fluid">
       <div class="row">
         <div class="col-sm-12 ">
-          <!-- <img src="/public/assets/img/notepad.png" alt="notepad">-->
+          <img src="/public/assets/img/notepad.png" alt="notepad">
         </div>
       </div>
     </div>
     <div class="container-fluid">
 
-      <div class="row align-items-center">
-        <div class="col-sm-12">
+      <div class="row align-items-center" id="list-bg">
+        <div class="col-sm-4 col-sm-offset-4">
           <table class="table table-sm" id="list">
             <thead id="tHead">
               <tr>
@@ -27,7 +27,7 @@
                 <th scope="col">Delete</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="tbody">
               <tr>
                 <th scope="row"></th>
                 {{#each items}} {{> items/items-block picked_up=false}}
