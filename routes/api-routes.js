@@ -53,14 +53,30 @@ module.exports = function(app, passport) {
     // PUT route for updating items
     app.put("/api/items", function(req, res) {
         db.Item.update(
-            req.body.picked_up, {
-                where: {
-                    id: req.body.id
-                }
-            }).then(function(dbItem) {
-            res.json(dbItem);
+          req.body.picked_up,
+          {
+            where: {
+            id: req.body.id
+            }
+          }).then(function(dbItem) {
+          res.json(dbItem);
+
         });
     });
+
+      //post route for adding an item
+      app.post("/api/items", function(req, res) {
+        db.Item.create(req.body).then(function(dbItem) {
+          //res.json(dbItem);
+        //   console.log(dbItem)
+        console.log(dbItem)
+       
+       
+        res.render("list", {items:[ dbItem]}  )
+      
+        });
+      
+      });
 
     // Get all groceries of a specific category
     app.get("/api/category/:category", function(req, res) {

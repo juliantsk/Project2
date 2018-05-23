@@ -32,17 +32,17 @@ module.exports = function(app, passport) {
     // });
 
     // show the user's list and information
-    //     app.get("/list", isLoggedIn, function(req, res) {
-    //         res.render("list", {
-    //             user: req.user
-    //         });
-    //     });
-    // };
+    app.get("/list", isLoggedIn, function(req, res) {
+        res.render("list", {
+            user: req.user
+        });
+    });
+};
 
 
-    // function isLoggedIn(req, res, next) {
-    //     if (req.isAuthenticated()) {
-    //         return next();
-    //     }
-    //     res.redirect("/");
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect("/");
 };

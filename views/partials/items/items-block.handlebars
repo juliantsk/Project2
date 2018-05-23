@@ -1,0 +1,9 @@
+<li>
+	{{name}}
+
+	<button class="change-pickedUp" data-id="{{id}}" data-newpickUp="{{sleep}}">
+		{{#unless picked_up}}Pick up{{else}}WAKE UP!{{/unless}}
+	</button>
+
+	<button class="deleteItem" data-id="{{this.id}}">DELETE!</button>
+</li>
